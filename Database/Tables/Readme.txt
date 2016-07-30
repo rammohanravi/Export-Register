@@ -1,0 +1,1 @@
+This is the place where we can add the tables scripts related to ExportRegister database
