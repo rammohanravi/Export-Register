@@ -1,0 +1,5 @@
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.BusinessLogicComponents\bin\Debug\ExportRegister.BusinessLogicComponents.dll
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.BusinessLogicComponents\bin\Debug\ExportRegister.BusinessLogicComponents.pdb
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.BusinessLogicComponents\obj\Debug\ExportRegister.BusinessLogicComponents.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.BusinessLogicComponents\obj\Debug\ExportRegister.BusinessLogicComponents.dll
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.BusinessLogicComponents\obj\Debug\ExportRegister.BusinessLogicComponents.pdb

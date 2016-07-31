@@ -1,0 +1,8 @@
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\bin\Debug\ExportRegister.DataAccessComponents.dll.config
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\bin\Debug\ExportRegister.DataAccessComponents.dll
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\bin\Debug\ExportRegister.DataAccessComponents.pdb
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\bin\Debug\ExportRegister.SharedComponents.dll
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\bin\Debug\ExportRegister.SharedComponents.pdb
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\obj\Debug\ExportRegister.DataAccessComponents.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\obj\Debug\ExportRegister.DataAccessComponents.dll
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.DataAccessComponents\obj\Debug\ExportRegister.DataAccessComponents.pdb

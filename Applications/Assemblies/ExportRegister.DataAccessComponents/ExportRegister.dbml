@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ExportRegister" Class="ExportRegisterDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.tCompanyDetails" Member="tCompanyDetails">
+    <Type Name="tCompanyDetail">
+      <Column Name="CompanyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyUrl" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CompanyAddress" Type="System.String" DbType="VarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyPhone" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CompanyFax" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tDepartments" Member="tDepartments">
+    <Type Name="tDepartment">
+      <Column Name="DepartmentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DepartmentName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tDepartment_tEmployeeDetail" Member="tEmployeeDetails" ThisKey="DepartmentId" OtherKey="DepartmentId" Type="tEmployeeDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tDesignation" Member="tDesignations">
+    <Type Name="tDesignation">
+      <Column Name="DesignationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DesignationName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tDesignation_tEmployeeDetail" Member="tEmployeeDetails" ThisKey="DesignationId" OtherKey="DesignationId" Type="tEmployeeDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tDispatchInstructionNote" Member="tDispatchInstructionNotes">
+    <Type Name="tDispatchInstructionNote">
+      <Column Name="DispatchInstructionNoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ConsigneeName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ConsigneeAddress" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IssueDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PackingType" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CigmaCustCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShptToCode" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tDispatchInstructionNote_tDispatchInstructionNoteVersion" Member="tDispatchInstructionNoteVersions" ThisKey="DispatchInstructionNoteId" OtherKey="DispatchInstructionNoteId" Type="tDispatchInstructionNoteVersion" />
+      <Association Name="tDispatchInstructionNote_tFinanceInvoice" Member="tFinanceInvoices" ThisKey="DispatchInstructionNoteId" OtherKey="DispatchInstructionNoteId" Type="tFinanceInvoice" />
+      <Association Name="tDispatchInstructionNote_tLoadingCheckSheet" Member="tLoadingCheckSheets" ThisKey="DispatchInstructionNoteId" OtherKey="DispatchInstructionNoteId" Type="tLoadingCheckSheet" />
+      <Association Name="tLogin_tDispatchInstructionNote" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tDispatchInstructionNoteVersion" Member="tDispatchInstructionNoteVersions">
+    <Type Name="tDispatchInstructionNoteVersion">
+      <Column Name="DispatchInstructionNoteVersionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DispatchInstructionNoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ModelOrEvent" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CustomerPONo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerPartNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DNKIFGpartnumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descp" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ShipQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UOM" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NPDPartHandOvertoCKD" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ProdStckInDtQAchk" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PckgDtlToFin" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CigInvFinInv" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Mode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ETDDNKI" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ETACust" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tDispatchInstructionNote_tDispatchInstructionNoteVersion" Member="tDispatchInstructionNote" ThisKey="DispatchInstructionNoteId" OtherKey="DispatchInstructionNoteId" Type="tDispatchInstructionNote" IsForeignKey="true" />
+      <Association Name="tLogin_tDispatchInstructionNoteVersion" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+      <Association Name="tLogin_tDispatchInstructionNoteVersion1" Member="tLogin1" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tEmployeeDetails" Member="tEmployeeDetails">
+    <Type Name="tEmployeeDetail">
+      <Column Name="EmployeeDetailsId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeShortName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailId" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LandlineNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ExtnNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DateOfBirth" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DesignationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tEmployeeDetail_tLogin" Member="tLogins" ThisKey="EmployeeDetailsId" OtherKey="EmployeeDetailsId" Type="tLogin" />
+      <Association Name="tDepartment_tEmployeeDetail" Member="tDepartment" ThisKey="DepartmentId" OtherKey="DepartmentId" Type="tDepartment" IsForeignKey="true" />
+      <Association Name="tDesignation_tEmployeeDetail" Member="tDesignation" ThisKey="DesignationId" OtherKey="DesignationId" Type="tDesignation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tExportRegisterBaseData" Member="tExportRegisterBaseDatas">
+    <Type Name="tExportRegisterBaseData">
+      <Column Name="ExportRegisterBaseDataId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CUSNO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SHPNO" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="PRTNO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DUEDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CORNO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CPRTN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="OGQTY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ORQTY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ALQTY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SHDQY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SHPDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NOSHP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KBFLG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ODRFL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SORNO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SPODF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="LMNDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ACTIONDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="tLogin_tExportRegisterBaseData" Member="tLogin" ThisKey="CREATEDBY" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tFinanceInvoice" Member="tFinanceInvoices">
+    <Type Name="tFinanceInvoice">
+      <Column Name="FinanceInvoiceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DispatchInstructionNoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Exporter" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="TinNo" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="KstNo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CstNo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EccNo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LtuNo" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BuyersOrderNo" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="BuyersOrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExportersRef" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="OtherReferences" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SoldTo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ShipToAddress" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PreCaariageBy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PlaceOfReceiptByPreCarrier" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryOfOrigionOfGooods" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryOfFinalDestintion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TermsOfDelivery" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Payment" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="VesselOrFlightNo" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PortOfLoading" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentBank" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentBranch" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentCountry" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentSwiftNo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentCurrentAccNo" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PortOfDischarge" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FinalDelivery" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Beneficiaryname" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ContainerNo" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SealNo" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tFinanceInvoice_tFinanceInvoiceDocketDetail" Member="tFinanceInvoiceDocketDetails" ThisKey="FinanceInvoiceId" OtherKey="FinanceInvoiceId" Type="tFinanceInvoiceDocketDetail" />
+      <Association Name="tFinanceInvoice_tFinanceInvoiceVersion" Member="tFinanceInvoiceVersions" ThisKey="FinanceInvoiceId" OtherKey="FinanceInvoiceId" Type="tFinanceInvoiceVersion" />
+      <Association Name="tDispatchInstructionNote_tFinanceInvoice" Member="tDispatchInstructionNote" ThisKey="DispatchInstructionNoteId" OtherKey="DispatchInstructionNoteId" Type="tDispatchInstructionNote" IsForeignKey="true" />
+      <Association Name="tLogin_tFinanceInvoice" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tFinanceInvoiceDocketDetails" Member="tFinanceInvoiceDocketDetails">
+    <Type Name="tFinanceInvoiceDocketDetail">
+      <Column Name="FinanceInvoiceDocketDetailsId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FinanceInvoiceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DocketNo" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="BillOfEntryNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillOfEntryDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Item" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="InwardQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReExportQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ESugmaNo" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PreapredBy" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="RequestedBy" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tFinanceInvoice_tFinanceInvoiceDocketDetail" Member="tFinanceInvoice" ThisKey="FinanceInvoiceId" OtherKey="FinanceInvoiceId" Type="tFinanceInvoice" IsForeignKey="true" />
+      <Association Name="tLogin_tFinanceInvoiceDocketDetail" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tFinanceInvoiceVersion" Member="tFinanceInvoiceVersions">
+    <Type Name="tFinanceInvoiceVersion">
+      <Column Name="tFinanceInvoiceVersionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FinanceInvoiceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MarksandNos" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Noandkindsofpckgs" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerPartNumber" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DNKIPartNumber" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DescGoods" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Cth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetWeight" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPirce" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tFinanceInvoice_tFinanceInvoiceVersion" Member="tFinanceInvoice" ThisKey="FinanceInvoiceId" OtherKey="FinanceInvoiceId" Type="tFinanceInvoice" IsForeignKey="true" />
+      <Association Name="tLogin_tFinanceInvoiceVersion" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tLoadingCheckSheet" Member="tLoadingCheckSheets">
+    <Type Name="tLoadingCheckSheet">
+      <Column Name="LoadingCheckSheetId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DispatchInstructionNoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TotNoBoxes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContainerType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContainerFillingRationInM3" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ActualFillingRationInM3" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ContainerFillingEfficiencyInPercent" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tLoadingCheckSheet_tLoadingCheckSheetContainerVersion" Member="tLoadingCheckSheetContainerVersions" ThisKey="LoadingCheckSheetId" OtherKey="LoadingCheckSheetId" Type="tLoadingCheckSheetContainerVersion" />
+      <Association Name="tLoadingCheckSheet_tLoadingCheckSheetPalletVersion" Member="tLoadingCheckSheetPalletVersions" ThisKey="LoadingCheckSheetId" OtherKey="LoadingCheckSheetId" Type="tLoadingCheckSheetPalletVersion" />
+      <Association Name="tDispatchInstructionNote_tLoadingCheckSheet" Member="tDispatchInstructionNote" ThisKey="DispatchInstructionNoteId" OtherKey="DispatchInstructionNoteId" Type="tDispatchInstructionNote" IsForeignKey="true" />
+      <Association Name="tLogin_tLoadingCheckSheet" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+      <Association Name="tLogin_tLoadingCheckSheet1" Member="tLogin1" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tLoadingCheckSheetContainerVersion" Member="tLoadingCheckSheetContainerVersions">
+    <Type Name="tLoadingCheckSheetContainerVersion">
+      <Column Name="tLoadingCheckSheetContainerVersion" Member="tLoadingCheckSheetContainerVersion1" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LoadingCheckSheetId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DNKIFGPrtNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NoOfPallets" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CabinNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CabinDirection" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tLoadingCheckSheet_tLoadingCheckSheetContainerVersion" Member="tLoadingCheckSheet" ThisKey="LoadingCheckSheetId" OtherKey="LoadingCheckSheetId" Type="tLoadingCheckSheet" IsForeignKey="true" />
+      <Association Name="tLogin_tLoadingCheckSheetContainerVersion" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tLoadingCheckSheetPalletVersion" Member="tLoadingCheckSheetPalletVersions">
+    <Type Name="tLoadingCheckSheetPalletVersion">
+      <Column Name="LoadingCheckSheetPalletVersionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LoadingCheckSheetId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DNKIFGPrtNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="QtyToShip" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QtyPerBox" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoOfBox" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoOfPallet" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GrossWghtPerBox" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="NetWghtperBox" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="M3PerBox" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="TotGw" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="TotNw" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="TotM3" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="TypBox" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BoxMeasurement" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NetWghtPerPiece" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tLoadingCheckSheet_tLoadingCheckSheetPalletVersion" Member="tLoadingCheckSheet" ThisKey="LoadingCheckSheetId" OtherKey="LoadingCheckSheetId" Type="tLoadingCheckSheet" IsForeignKey="true" />
+      <Association Name="tLogin_tLoadingCheckSheetPalletVersion" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tLogin" Member="tLogins">
+    <Type Name="tLogin">
+      <Column Name="LoginId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LoginPassword" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeDetailsId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsRandomPwd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tLogin_tDispatchInstructionNote" Member="tDispatchInstructionNotes" ThisKey="LoginId" OtherKey="CreatedBy" Type="tDispatchInstructionNote" />
+      <Association Name="tLogin_tDispatchInstructionNoteVersion" Member="tDispatchInstructionNoteVersions" ThisKey="LoginId" OtherKey="CreatedBy" Type="tDispatchInstructionNoteVersion" />
+      <Association Name="tLogin_tDispatchInstructionNoteVersion1" Member="tDispatchInstructionNoteVersions1" ThisKey="LoginId" OtherKey="CreatedBy" Type="tDispatchInstructionNoteVersion" />
+      <Association Name="tLogin_tExportRegisterBaseData" Member="tExportRegisterBaseDatas" ThisKey="LoginId" OtherKey="CREATEDBY" Type="tExportRegisterBaseData" />
+      <Association Name="tLogin_tFinanceInvoice" Member="tFinanceInvoices" ThisKey="LoginId" OtherKey="CreatedBy" Type="tFinanceInvoice" />
+      <Association Name="tLogin_tFinanceInvoiceDocketDetail" Member="tFinanceInvoiceDocketDetails" ThisKey="LoginId" OtherKey="CreatedBy" Type="tFinanceInvoiceDocketDetail" />
+      <Association Name="tLogin_tFinanceInvoiceVersion" Member="tFinanceInvoiceVersions" ThisKey="LoginId" OtherKey="CreatedBy" Type="tFinanceInvoiceVersion" />
+      <Association Name="tLogin_tLoadingCheckSheet" Member="tLoadingCheckSheets" ThisKey="LoginId" OtherKey="CreatedBy" Type="tLoadingCheckSheet" />
+      <Association Name="tLogin_tLoadingCheckSheet1" Member="tLoadingCheckSheets1" ThisKey="LoginId" OtherKey="CreatedBy" Type="tLoadingCheckSheet" />
+      <Association Name="tLogin_tLoadingCheckSheetContainerVersion" Member="tLoadingCheckSheetContainerVersions" ThisKey="LoginId" OtherKey="CreatedBy" Type="tLoadingCheckSheetContainerVersion" />
+      <Association Name="tLogin_tLoadingCheckSheetPalletVersion" Member="tLoadingCheckSheetPalletVersions" ThisKey="LoginId" OtherKey="CreatedBy" Type="tLoadingCheckSheetPalletVersion" />
+      <Association Name="tLogin_tWareHouseMaster" Member="tWareHouseMasters" ThisKey="LoginId" OtherKey="CreatedBy" Type="tWareHouseMaster" />
+      <Association Name="tEmployeeDetail_tLogin" Member="tEmployeeDetail" ThisKey="EmployeeDetailsId" OtherKey="EmployeeDetailsId" Type="tEmployeeDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tWareHouseMaster" Member="tWareHouseMasters">
+    <Type Name="tWareHouseMaster">
+      <Column Name="WareHouseMasterId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Customer" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PartNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PartName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="QtyPerBox" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetWeightPerPiece" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="NetWeightPerBox" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="GrossWeightPerBox" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="MeasurementPerBox" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TypOfPackng" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="M3" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tLogin_tWareHouseMaster" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

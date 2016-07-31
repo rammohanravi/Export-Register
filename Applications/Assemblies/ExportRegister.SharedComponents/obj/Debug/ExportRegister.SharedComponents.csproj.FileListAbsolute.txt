@@ -1,0 +1,5 @@
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.SharedComponents\bin\Debug\ExportRegister.SharedComponents.dll
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.SharedComponents\bin\Debug\ExportRegister.SharedComponents.pdb
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.SharedComponents\obj\Debug\ExportRegister.SharedComponents.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.SharedComponents\obj\Debug\ExportRegister.SharedComponents.dll
+C:\Users\User\Documents\GitHub\Export-Register\Applications\Assemblies\ExportRegister.SharedComponents\obj\Debug\ExportRegister.SharedComponents.pdb
