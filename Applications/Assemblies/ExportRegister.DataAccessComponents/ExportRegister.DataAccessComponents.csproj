@@ -53,6 +53,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="UserCompiledQueries.cs" />
+    <Compile Include="UserDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
