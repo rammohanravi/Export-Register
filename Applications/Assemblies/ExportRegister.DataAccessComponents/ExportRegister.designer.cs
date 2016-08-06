@@ -75,6 +75,9 @@ namespace ExportRegister.DataAccessComponents
     partial void InserttWareHouseMaster(tWareHouseMaster instance);
     partial void UpdatetWareHouseMaster(tWareHouseMaster instance);
     partial void DeletetWareHouseMaster(tWareHouseMaster instance);
+    partial void InserttApplicationLog(tApplicationLog instance);
+    partial void UpdatetApplicationLog(tApplicationLog instance);
+    partial void DeletetApplicationLog(tApplicationLog instance);
     #endregion
 		
 		public ExportRegisterDataContext(string connection) : 
@@ -218,6 +221,14 @@ namespace ExportRegister.DataAccessComponents
 			get
 			{
 				return this.GetTable<tWareHouseMaster>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tApplicationLog> tApplicationLogs
+		{
+			get
+			{
+				return this.GetTable<tApplicationLog>();
 			}
 		}
 	}
@@ -6909,6 +6920,140 @@ namespace ExportRegister.DataAccessComponents
 						this._CreatedBy = default(Nullable<System.Guid>);
 					}
 					this.SendPropertyChanged("tLogin");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tApplicationLog")]
+	public partial class tApplicationLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Logid;
+		
+		private string _LogMessage;
+		
+		private string _LogMessageType;
+		
+		private System.Nullable<System.DateTime> _LoggedDateTime;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLogidChanging(int value);
+    partial void OnLogidChanged();
+    partial void OnLogMessageChanging(string value);
+    partial void OnLogMessageChanged();
+    partial void OnLogMessageTypeChanging(string value);
+    partial void OnLogMessageTypeChanged();
+    partial void OnLoggedDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnLoggedDateTimeChanged();
+    #endregion
+		
+		public tApplicationLog()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logid", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Logid
+		{
+			get
+			{
+				return this._Logid;
+			}
+			set
+			{
+				if ((this._Logid != value))
+				{
+					this.OnLogidChanging(value);
+					this.SendPropertyChanging();
+					this._Logid = value;
+					this.SendPropertyChanged("Logid");
+					this.OnLogidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogMessage", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LogMessage
+		{
+			get
+			{
+				return this._LogMessage;
+			}
+			set
+			{
+				if ((this._LogMessage != value))
+				{
+					this.OnLogMessageChanging(value);
+					this.SendPropertyChanging();
+					this._LogMessage = value;
+					this.SendPropertyChanged("LogMessage");
+					this.OnLogMessageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogMessageType", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string LogMessageType
+		{
+			get
+			{
+				return this._LogMessageType;
+			}
+			set
+			{
+				if ((this._LogMessageType != value))
+				{
+					this.OnLogMessageTypeChanging(value);
+					this.SendPropertyChanging();
+					this._LogMessageType = value;
+					this.SendPropertyChanged("LogMessageType");
+					this.OnLogMessageTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoggedDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LoggedDateTime
+		{
+			get
+			{
+				return this._LoggedDateTime;
+			}
+			set
+			{
+				if ((this._LoggedDateTime != value))
+				{
+					this.OnLoggedDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._LoggedDateTime = value;
+					this.SendPropertyChanged("LoggedDateTime");
+					this.OnLoggedDateTimeChanged();
 				}
 			}
 		}

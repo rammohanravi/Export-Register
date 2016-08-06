@@ -296,4 +296,12 @@
       <Association Name="tLogin_tWareHouseMaster" Member="tLogin" ThisKey="CreatedBy" OtherKey="LoginId" Type="tLogin" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tApplicationLog" Member="tApplicationLogs">
+    <Type Name="tApplicationLog">
+      <Column Name="Logid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LogMessage" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LogMessageType" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
